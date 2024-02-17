@@ -1,5 +1,5 @@
 # Competitive_Programming
-Repository containing solutions to various problems and implementations of data structures &amp; algorithmic topics from CP-ALGO, a popular competitive programming learning platform. Ideal for learners and seasoned competitors alike.
+This repository contains solutions to various problems and implementations of data structure & algorithmic topics sourced from **cp-algorithms**, a renowned online resource for competitive programming enthusiasts.
 
 
 ## Contents
@@ -18,7 +18,7 @@ Contributions to this repository are welcome! If you have additional solutions t
 
 ## Acknowledgments
 
-A big thanks to CP-ALGO for providing valuable learning resources and problem sets for the competitive programming community.
+A big thanks to **cp-algorithms** for providing valuable learning resources and problem sets for the competitive programming community.
 
 ## License
 
