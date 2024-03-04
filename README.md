@@ -1,5 +1,5 @@
 # Competitive_Programming
-This repository contains solutions to various problems and implementations of data structure & algorithmic topics sourced from **cp-algorithms**, a renowned online resource for competitive programming enthusiasts.
+This repository contains solutions to various problems and implementations of data structure & algorithmic topics sourced from [**cp-algorithms**](https://cp-algorithms.com/index.html), a renowned online resource for competitive programming enthusiasts.
 
 You can keep track of my progress with this [**Google Sheet**](https://docs.google.com/spreadsheets/d/1AScjm2Ti1QvZbjHfVHXIZ8eEYr5t_Nn-ISz0WyfwBgk/edit#gid=0).
 
