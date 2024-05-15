@@ -5,14 +5,6 @@ public:
     bool visited[N][N];
     map<pair<int,int>, vector<pair<int,int>>> adjList;
 
-    void makeZero(){
-        for(int i=0; i<N; i++){
-            for(int j=0; j<N; j++){
-                distance[i][j]=0;
-                visited[i][j]=false;
-            }
-        }
-    }
     int DFS(int x, int y, vector<vector<int>>& grid){
         visited[x][y]=true;
         distance[x][y]=grid[x][y];
@@ -44,12 +36,10 @@ public:
         }
         int result=0;
         for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
-                if(grid[i][j]){
-                    makeZero();
+            for(int j=0; j<n; j++)
+                if(grid[i][j])
                     result=max(result,DFS(i,j,grid));
-                }
-            }
+                
         }
         return result;
     }
