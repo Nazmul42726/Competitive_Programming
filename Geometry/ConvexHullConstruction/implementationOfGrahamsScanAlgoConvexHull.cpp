@@ -12,7 +12,7 @@ struct point{
 };
 
 int orientation(point a, point b, point c){
-    double v = a.x*(b.y-c.y) + b.x*(c.y-a.y) + c.x*(a.y-b.y);
+    double v = (a.x-b.x)*(b.y-c.y) - (b.x-c.x)*(a.y-b.y);
     //shoelace formula (area of triangle using coordinates)
     if(v < 0) return -1; //clockwise turn
     if(v > 0) return 1;  //counter-clockwise turn
