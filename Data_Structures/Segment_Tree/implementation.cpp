@@ -5,6 +5,11 @@ const int maxN = 2e5+10;
 int n;
 vector<int> tree(4*maxN);
 
+//initially:
+//v = 1 [first node of the tree]
+//tl = 0 [first index of the range]
+//tr = n-1 [last index of the range]
+
 void build(vector<int>& a, int v, int tl, int tr){
     if(tl == tr){
         tree[v] = a[tl];
