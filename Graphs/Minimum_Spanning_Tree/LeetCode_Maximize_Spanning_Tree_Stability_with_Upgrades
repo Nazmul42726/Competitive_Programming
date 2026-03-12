@@ -1,0 +1,101 @@
+class Solution {
+public:
+    const int inf = 1e9+7;
+    vector<int> parent, setRank;
+
+    void makeSet(int v){
+        parent[v] = v;
+        setRank[v] = 0;
+    }
+
+    int findSet(int v){
+        if(parent[v] == v) return v;
+        return parent[v] = findSet(parent[v]);
+    }
+
+    void unionSet(int a, int b){
+        a = findSet(a);
+        b = findSet(b);
+
+        if(setRank[a] < setRank[b]) swap(a, b);
+        parent[b] = a;
+        if(setRank[a] == setRank[b]) setRank[a]++;
+    }
+
+    int maxStability(int n, vector<vector<int>>& edges, int k) {
+        vector<pair<int,int>> mustTake;
+        vector<pair<int,pair<int,int>>> edge;
+        vector<vector<int>> adjList(n);
+
+        int result = inf;
+
+        for(auto it: edges){
+            adjList[it[0]].push_back(it[1]);
+            adjList[it[1]].push_back(it[0]);
+
+            if(it[3]){
+                mustTake.push_back({it[0], it[1]});
+                result = min(result, it[2]);
+            }
+            else edge.push_back({it[2], {it[0], it[1]}});
+        }
+
+        vector<bool> visited(n, false);
+        queue<int> q;
+        q.push(0);
+        visited[0] = true;
+
+        while(!q.empty()){
+            int cur = q.front();
+            q.pop();
+
+            for(auto it: adjList[cur]){
+                if(!visited[it]){
+                    visited[it] = true;
+                    q.push(it);
+                }
+            }
+        }
+
+        for(int i=0; i<n; i++){
+            if(!visited[i]) return -1;
+        }
+
+        parent = vector<int>(n);
+        setRank = vector<int>(n);
+
+        for(int i=0; i<n; i++) makeSet(i);
+
+        for(auto it: mustTake){
+            int a = findSet(it.first);
+            int b = findSet(it.second);
+
+            if(a == b) return -1;
+            unionSet(a, b);
+        }
+
+        sort(edge.rbegin(), edge.rend());
+        vector<int> s;
+        s.push_back(inf);
+
+        for(auto it: edge){
+            int a = it.second.first;
+            int b = it.second.second;
+
+            a = findSet(a);
+            b = findSet(b);
+
+            if(a != b){
+                s.push_back(it.first);
+                unionSet(a, b);
+            }
+        }
+        sort(s.begin(), s.end());
+        for(int i=0; i<(min(k, (int)s.size())); i++){
+            s[i] *= 2;
+        }
+        sort(s.begin(), s.end());
+        result = min(result, s[0]);
+        return result;
+    }
+};
